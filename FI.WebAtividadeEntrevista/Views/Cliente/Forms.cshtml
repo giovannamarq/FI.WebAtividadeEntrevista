@@ -1,0 +1,121 @@
+﻿@model WebAtividadeEntrevista.Models.ClienteModel
+
+<form id="formCadastro" method="post">
+
+    <input type="hidden" id="Id" name="Id" value="@Model?.Id ?? 0" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Nome:</label>
+            <input required type="text" class="form-control" id="Nome" name="Nome" />
+        </div>
+
+        <div class="col-md-6">
+            <label>Sobrenome:</label>
+            <input required type="text" class="form-control" id="Sobrenome" name="Sobrenome" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>CPF:</label>
+            <input required type="text" class="form-control" id="CPF" name="CPF" maxlength="14" />
+        </div>
+
+        <div class="col-md-6">
+            <label>Nacionalidade:</label>
+            <input required type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>CEP:</label>
+            <input required type="text" class="form-control" id="CEP" name="CEP" maxlength="9" />
+        </div>
+
+        <div class="col-md-4">
+            <label>Estado:</label>
+            <select required id="Estado" name="Estado" class="form-control">
+                <option value="">Selecione</option>
+                <option value="SP">São Paulo</option>
+                <option value="PE">Pernambuco</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label>Cidade:</label>
+            <input required type="text" class="form-control" id="Cidade" name="Cidade" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label>Logradouro:</label>
+            <input required type="text" class="form-control" id="Logradouro" name="Logradouro" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Email:</label>
+            <input type="text" class="form-control" id="Email" name="Email" />
+        </div>
+
+        <div class="col-md-6">
+            <label>Telefone:</label>
+            <input type="text" class="form-control" id="Telefone" name="Telefone" />
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-lg-12">
+
+            <div class="pull-right">
+                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Cliente", null, new { @class = "btn btn-danger btn-sm" })
+            </div>
+
+            <div class="pull-left">
+                <button type="button" class="btn btn-primary btn-sm" id="btnModalBenef" data-toggle="modal" data-target="#modalBeneficiario">
+                    Beneficiários
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+<!-- Modal Beneficiários -->
+<div class="modal fade" id="modalBeneficiario" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Beneficiários</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table id="gridBenef" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div class="form-group">
+                    <input type="text" id="cpfBenef" placeholder="CPF" class="form-control mb-2" />
+                    <input type="text" id="nomeBenef" placeholder="Nome" class="form-control mb-2" />
+                    <button type="button" id="btnAddBenef" class="btn btn-primary btn-sm">Adicionar</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
